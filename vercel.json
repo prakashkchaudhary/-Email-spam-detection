@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app.py"
+    }
+  ],
+  "env": {
+    "FLASK_ENV": "production"
+  },
+  "buildCommand": "pip install -r requirements.txt && python -c 'import nltk; nltk.download(\"stopwords\"); nltk.download(\"punkt\")' && python src/model_training.py"
+}
